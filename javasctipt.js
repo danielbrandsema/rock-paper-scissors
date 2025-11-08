@@ -30,3 +30,9 @@ function getComputerChoice(a,b,c) {
  }
 
  console.log(getHumanChoice(a,b,c));
+
+ let computerScore = 0;
+ let humanScore = 0;
+
+ console.log(computerScore);
+ console.log(humanScore);
