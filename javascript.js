@@ -13,14 +13,9 @@ function playGame() {
     }
 
     function getHumanChoice() {
-        let answer = prompt("Enter 'rock', 'paper' or 'scissors'?")
-        answer = answer.toLowerCase();
-        if (answer == 'rock') {
-            return 'rock';
-        } else if (answer == 'paper') {
-            return 'paper';
-        } else if (answer == 'scissors') {
-            return 'scissors';
+        let answer = prompt("Enter 'rock', 'paper' or 'scissors'?").toLowerCase();
+        if (answer === 'rock'|| answer === 'paper'|| answer === 'scissors') {
+            return answer;
         }
     }    
     
@@ -94,6 +89,12 @@ function playGame() {
     // Scores after 5 rounds
     console.log("Computer score:", computerScore);
     console.log("Your score:", humanScore);
+
+    if (humanScore > computerScore) {
+        console.log(`You won: ${humanScore} against ${computerScore}!`)
+    } else if (computerScore > humanScore) {
+        console.log(`You lost: ${humanScore} against ${computerScore}!`)
+    } else console.log(`It's a tie! ${humanScore} - ${computerScore}`)
 }
 
 playGame();
