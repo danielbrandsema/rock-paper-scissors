@@ -28,43 +28,46 @@ function getComputerChoice() {
 
  console.log(getHumanChoice());
 
-/* let computerScore = 0;
+ let computerScore = 0;
  let humanScore = 0;
 
 
- let humanChoice = getHumanChoice(a,b,c);
- let computerChoice = getComputerChoice(a,b,c);
+ let humanChoice = getHumanChoice();
+ let computerChoice = getComputerChoice();
 
- console.log(computerChoice);
- console.log(humanChoice);
+ console.log("Computer chose:", computerChoice);
+ console.log("You chose:", humanChoice);
 
- //function playRound(humanChoice, computerChoice) {
+ function playRound(humanChoice, computerChoice) {
     let result;
-    if ((computerChoice == a) && (humanChoice == b)) {
+    if ((computerChoice === 'rock') && (humanChoice === 'paper')) {
         result = "You win! Paper beats rock.";
-        humanScore = (humanScore + 1);
-    } else if ((computerChoice == a) && (humanChoice == c)) {
+        humanScore = ++humanScore;
+    } else if ((computerChoice === 'rock') && (humanChoice === 'scissors')) {
         result = "You lose! Rock beats scissors.";
-        computerScore = (computerScore + 1);
-    } else if ((computerChoice == b) && (humanChoice == a)) {
+        computerScore = ++computerScore;
+    } else if ((computerChoice === 'paper') && (humanChoice === 'rock')) {
         result = "You lose! Paper beats rock.";
-        computerScore = (computerScore + 1);
-    } else if ((computerChoice == b) && (humanChoice == c)) {
+        computerScore = ++computerScore;
+    } else if ((computerChoice === 'paper') && (humanChoice === 'scissors')) {
         result = "You win! Scissors beats paper.";
-        humanScore = (humanScore + 1);
-    } else if ((computerChoice == c) && (humanChoice == a)) {
+        humanScore = ++humanScore;
+    } else if ((computerChoice === 'scissors') && (humanChoice === 'rock')) {
         result = "You win! Rock beats scissors.";
-        humanScore = (humanScore + 1);
-    } else if ((computerChoice == c) && (humanChoice == b)) {
+        humanScore = ++humanScore;
+    } else if ((computerChoice === 'scissors') && (humanChoice === 'paper')) {
         result = "You lose! Scissors beats paper.";
-        computerScore = (computerScore + 1);
+        computerScore = ++computerScore;
     } else result = "Equal score! Try again.";
- //}
+ return result;
+ }
 
- console.log(result);
- console.log(computerScore);
- console.log(humanScore);
- */
+
+ let roundResult = playRound(humanChoice, computerChoice);
+ console.log(roundResult);
+ console.log("Computer score:", computerScore);
+ console.log("Your score:", humanScore);
+ 
 
  
 
