@@ -46,54 +46,29 @@ function playGame() {
         return result;
     }
 
-    // **Round 1**
-    let computerChoice = getComputerChoice();
-    let humanChoice = getHumanChoice();
-    let roundResult = playRound(computerChoice, humanChoice);
-    console.log("Computer chose:", computerChoice);
-    console.log("You chose:", humanChoice);
-    console.log(roundResult);
+    function playAndLogRound() {
+        let computerChoice = getComputerChoice();
+        let humanChoice = getHumanChoice();
+        let roundResult = playRound(computerChoice, humanChoice);
+        console.log("Computer chose:", computerChoice);
+        console.log("You chose:", humanChoice);
+        console.log(roundResult);
+    }
 
-    // **Round 2**
-    computerChoice = getComputerChoice();
-    humanChoice = getHumanChoice();
-    roundResult = playRound(computerChoice, humanChoice);
-    console.log("Computer chose:", computerChoice);
-    console.log("You chose:", humanChoice);
-    console.log(roundResult);
-
-    // **Round 3**
-    computerChoice = getComputerChoice();
-    humanChoice = getHumanChoice();
-    roundResult = playRound(computerChoice, humanChoice);
-    console.log("Computer chose:", computerChoice);
-    console.log("You chose:", humanChoice);
-    console.log(roundResult);
-
-    // **Round 4**
-    computerChoice = getComputerChoice();
-    humanChoice = getHumanChoice();
-    roundResult = playRound(computerChoice, humanChoice);
-    console.log("Computer chose:", computerChoice);
-    console.log("You chose:", humanChoice);
-    console.log(roundResult);
-
-    // **Round 5**
-    computerChoice = getComputerChoice();
-    humanChoice = getHumanChoice();
-    roundResult = playRound(computerChoice, humanChoice);
-    console.log("Computer chose:", computerChoice);
-    console.log("You chose:", humanChoice);
-    console.log(roundResult);
-
+    playAndLogRound();
+    playAndLogRound();
+    playAndLogRound();
+    playAndLogRound();
+    playAndLogRound();
+    
     // Scores after 5 rounds
     console.log("Computer score:", computerScore);
     console.log("Your score:", humanScore);
 
     if (humanScore > computerScore) {
-        console.log(`You won: ${humanScore} against ${computerScore}!`)
+        console.log(`You won: ${humanScore} - ${computerScore}!`)
     } else if (computerScore > humanScore) {
-        console.log(`You lost: ${humanScore} against ${computerScore}!`)
+        console.log(`You lost: ${humanScore} - ${computerScore}!`)
     } else console.log(`It's a tie! ${humanScore} - ${computerScore}`)
 }
 
