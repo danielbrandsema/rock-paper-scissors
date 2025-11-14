@@ -1,11 +1,64 @@
-<!DOCTYPE html>
-<html lang='en'>
-  <head>
-    <meta charset='UTF-8'/>
-    <link rel="stylesheet" href="">
-    <script src="../rock-paper-scissors/javai-script.js"></script>
-    <title>Rock Paper Scissors</title>
-  </head>
-  <body>
-  </body>
-</html>
+<body>
+  <div id="choices"></div>
+  <div id="result"></div>
+
+  <script>
+    const btnDiv = document.createElement('div');
+    const resDiv = document.createElement('div');
+
+    document.body.appendChild(btnDiv);
+    document.body.appendChild(resDiv);
+
+    const btnRock = document.createElement('button');
+    const btnPaper = document.createElement('button');
+    const btnScissors = document.createElement('button');
+
+    btnDiv.append(btnRock, btnPaper, btnScissors);
+
+    btnRock.textContent = 'Rock';
+    btnPaper.textContent = 'Paper';
+    btnScissors.textContent = 'Scissors';
+
+    let computerScore = 0;
+    let humanScore = 0;
+
+    function getComputerChoice() {
+        const options = ['rock', 'paper', 'scissors'];
+        return options[Math.floor(Math.random() * 3)];
+    }
+
+    function playRound(computerChoice, humanChoice) {
+        if (computerChoice === humanChoice) {
+            return "Draw!";
+        }
+        if (
+            (computerChoice === 'rock' && humanChoice === 'paper') ||
+            (computerChoice === 'paper' && humanChoice === 'scissors') ||
+            (computerChoice === 'scissors' && humanChoice === 'rock')
+        ) {
+            humanScore++;
+            return `You win! ${humanChoice} beats ${computerChoice}`;
+        } else {
+            computerScore++;
+            return `You lose! ${computerChoice} beats ${humanChoice}`;
+        }
+    }
+
+    function handleClick(humanChoice) {
+        const computerChoice = getComputerChoice();
+        const result = playRound(computerChoice, humanChoice);
+
+        resDiv.innerHTML = `
+            <p>Computer chose: ${computerChoice}</p>
+            <p>You chose: ${humanChoice}</p>
+            <p>${result}</p>
+            <p>Score — You: ${humanScore} | Computer: ${computerScore}</p>
+        `;
+    }
+
+    btnRock.addEventListener('click', () => handleClick('rock'));
+    btnPaper.addEventListener('click', () => handleClick('paper'));
+    btnScissors.addEventListener('click', () => handleClick('scissors'));
+
+  </script>
+</body>

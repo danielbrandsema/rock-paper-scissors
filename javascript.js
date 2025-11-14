@@ -7,12 +7,19 @@
     const btnRock = document.createElement('button');
     const btnPaper = document.createElement('button');
     const btnScissors = document.createElement('button');
-    
+        
     btnDiv.append(btnRock, btnPaper, btnScissors);
 
     btnRock.textContent = 'Rock';
     btnPaper.textContent = 'Paper';
     btnScissors.textContent = 'Scissors';
+
+    const p1 = document.createElement('p');
+    const p2 = document.createElement('p');
+    const p3 = document.createElement('p');
+    const p4 = document.createElement('p');
+        
+    resDiv.append(p1, p2, p3, p4);
 
     let computerScore = 0;
     let humanScore = 0;
@@ -65,38 +72,34 @@ function playGame() {
     function handleClick(humanChoice) {
         const computerChoice = getComputerChoice();
         const result = playRound(computerChoice, humanChoice);
-        resDiv.innerHTML = `
-            <p>Computer chose: ${computerChoice}</p>
-            <p>You chose: ${humanChoice}</p>
-            <p>${result}</p>
-            <p>Score — You: ${humanScore} | Computer: ${computerScore}</p>
-        `}    
+
+        p1.textContent = `Computer chose: ${computerChoice}`;
+        p2.textContent = `You chose: ${humanChoice}`;
+        p3.textContent = `${result}`;
+        p4.textContent = `Score — You: ${humanScore} | Computer: ${computerScore}`;
+
+        checkWinner();
+    }
+    
+    function checkWinner() {
+        if (humanScore === 5 || computerScore === 5) {
+            alert(`Game over! ${
+                humanScore === 5 ? 'You win!' : 'Computer wins!'
+            } Restarting game...`)        
+            
+            humanScore = 0;
+            computerScore = 0;
+
+            p1.textContent = '';
+            p2.textContent = '';
+            p3.textContent = '';
+            p4.textContent = '';
+        }
+    }
 
     btnRock.addEventListener('click', () => handleClick('rock'));
     btnPaper.addEventListener('click', () => handleClick('paper'));
     btnScissors.addEventListener('click', () => handleClick('rock'));
-    
-    /*function playAndLogRound() {
-        let computerChoice = getComputerChoice();
-        let humanChoice = getHumanChoice();
-        let roundResult = playRound(computerChoice, humanChoice);
-    }
-    
-    playAndLogRound();
-    playAndLogRound();
-    playAndLogRound();
-    playAndLogRound();
-    playAndLogRound();*/
-       
-        
-    
-    // Scores after 5 rounds
-    /*
-    if (humanScore > computerScore) {
-        console.log(`You won: ${humanScore} - ${computerScore}!`)
-    } else if (computerScore > humanScore) {
-        console.log(`You lost: ${humanScore} - ${computerScore}!`)
-    } else console.log(`It's a tie! ${humanScore} - ${computerScore}`)*/
 } 
 
-playGame();
+playGame() 
